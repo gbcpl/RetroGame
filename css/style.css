@@ -5,11 +5,15 @@ body {
 #logo {
     height: 70px;
 }
-
+a:visited {
+  color:white;
+}
 .rightheader {
     display: flex;
     flex-direction: row;
+    position: fixed;
 }
+
 form {
     display: flex;
 }
@@ -34,6 +38,13 @@ form {
 
 .icon {
     height: 40px;
+}
+
+.carousel-inner {  
+  display: block;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;  
 }
 
 .container{
@@ -213,23 +224,30 @@ li {
     top: 90px;
     background-color: #16F5B2;
     height: 100%;
-    width: 16%;
+    width: 20%;
     padding-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
+    padding-left: 0px;
+ 
+}
+
+#tableaudebord {
+  padding-left: 6px;
 }
 
 .customer {
-    position: absolute;
-    top: 200px;
-    display: flex;
-    margin-left: 400px;
+  top: 20%;
+  width: 80%;
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 100px;
+  flex-wrap: wrap;
 }
 
 .items_customer {
     border: solid;
-    height: 400px;
-    width: 40%;
+    height: 20vw;
+    width: 30%;
     margin-left: 200px;
 }
 
@@ -372,7 +390,6 @@ html, body {
   align-items: center;
   justify-content: space-between;
   background-color: #F5225C;
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: #FFF;
   height: 90px;
   padding: 1em;
@@ -441,7 +458,7 @@ html, body {
   transform: rotate(-405deg);
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
   .menu-button-container {
     display: flex;
   }
@@ -484,5 +501,10 @@ html, body {
     justify-content: center;
   }
   .biglogo {
-    display: none;  }
+    display: none;  
+  }
+  .navbarleft {
+      z-index: -1;
+      width: 30%;
+    }
 }

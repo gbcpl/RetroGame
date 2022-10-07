@@ -1,4 +1,4 @@
-<section class="top-nav">
+<section class="top-nav fixed-top">
     <div>
       <a href="index.php"><img id="logo" src="img/logo.png"></a>
     </div>
@@ -8,8 +8,8 @@
   </label>
     <ul class="menu">
       <li><h3><a href="index.php">Accueil</a></h3></li>
-      <li><h3>Catalogue</h3></li>
-      <li><h3>Contact</h3></li>
+      <li><h3><a href="search.php">Rechercher</a></h3></li>
+      <li><h3><a href="contact.php">Contact</a></h3></li>
       <li><a href="login.php"><button class="buttonheader nav-item">Se connecter</button></a></li>
       <li><a href="signin.php"><button class="buttonheader nav-item">S'inscrire</button></a></li>
     </ul>

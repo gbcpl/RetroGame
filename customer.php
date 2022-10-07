@@ -11,10 +11,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="cache-control" content="no-cache" />
     <meta http-equiv="pragma" content="no-cache" />
+    <meta name="description" content="Suivez vos commandes et indiquez vos informations personnelles"/>    
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Retro Game</title>
+    <title>Page client</title>
 </head>
 <body>
 
@@ -22,7 +23,7 @@
 
     <aside>
         <nav class="navbarleft fixed-left">
-            <ul>
+            <ul id="tableaudebord">
                 <li><h2>Tableau de bord</h2></li>
                 <li><a href="customer.php">Accueil</a></li>
                 <li><a href="customer_commands.php">Mes commandes</a></li>
@@ -40,7 +41,7 @@
             <h2>Ma dernière commande</h2>
         </div>
         <div class="items_customer">
-            <h2>Mes informations perssonnelles</h2>
+            <h2>Mes informations personnelles</h2>
             <p class="infosperso">Nom</p>
             <p class="infosperso">Prénom</p>
             <p class="infosperso">Email</p>

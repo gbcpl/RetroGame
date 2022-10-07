@@ -5,8 +5,7 @@
             </div>
             <div>
             <ul>               
-                <li><a class="links" href="#">Page d'accueil</a></li>
-                <li><a class="links" href="#">Catalogue</a></li>
+                <li><a class="links" href="index.php">Page d'accueil</a></li>
                 <li><a class="links" href="#">Contact</a></li>
             </div>
             <div>
