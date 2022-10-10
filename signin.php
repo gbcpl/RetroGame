@@ -10,7 +10,10 @@
 		require('src/connect.php');
 
 		// CREER VARIABLES
+		$last_name = htmlspecialchars($_POST['last_name']);
+		$first_name = htmlspecialchars($_POST['first_name']);
 		$email = htmlspecialchars($_POST['email']);
+		$company = htmlspecialchars($_POST['company']);
 		$password = htmlspecialchars($_POST['password']);
 		$password_two = htmlspecialchars($_POST['password_two']);
 
@@ -95,7 +98,7 @@
                         echo'<div class="alert error">'.htmlspecialchars($_GET['message']).'</div>';
                     } 
                     } else if (isset($_GET['success'])) {
-                    echo'<div class="alert success">Vous êtes désormais inscrit. <a href="index.php">Connectez-vous</a>.</div>';
+                    echo'<div class="alert success">Le compte seller a été créé. <a href="login.php">Connectez-vous</a>.</div>';
                     }?>
 
             <form class="signin" method="post" action="signin.php">
