@@ -1,9 +1,6 @@
-<section class="top-nav fixed-top">
-    <div>
+<header class="top-nav fixed-top">
       <a href="index.php"><img id="logo" src="img/logo.png"></a>
-    </div>
     <input id="menu-toggle" type="checkbox" />
-  </label>
     <ul class="menu">
       <li><h3><a class="nav-item" href="index.php">Accueil</a></h3></li>
       <li><h3><a class="nav-item" href="search.php">Rechercher</a></h3></li>
@@ -15,4 +12,4 @@
     <label class='menu-button-container' for="menu-toggle">
       <div class='menu-button'></div>
     </label>
-  </section>
+  </header>

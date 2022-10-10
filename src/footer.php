@@ -7,6 +7,7 @@
             <ul>                
                 <li><a class="links" href="index.php">Page d'accueil</a></li>
                 <li><a class="links" href="#">Contact</a></li>
+                <li><a class="links" href="seller_login.php">Espace Vendeur</a></li>
             </div>
             <div>
                 <ul>

@@ -1,3 +1,4 @@
+<?php require('src/connect.php'); ?>
 
 
 <!DOCTYPE html>
@@ -42,18 +43,8 @@
   $dsn = "mysql:host=$host;dbname=$dbname"; 
   // récupérer tous les utilisateurs
   $sql = "SELECT * FROM Customer WHERE ID = 1";
-   
-  try{
-   $pdo = new PDO($dsn, $username, $password);
-   $stmt = $pdo->query($sql);
-   
-   if($stmt === false){
-    die("Erreur");
-   }
-   
-  }catch (PDOException $e){
-    echo $e->getMessage();
-  }
+  $row = [];
+  $stmt = (object)[];
 ?>
 <div class="infosperso">
  <table>
@@ -101,8 +92,7 @@
           <input type="submit">
         </form>
         
-        </div>
-     </div>
+      </div>
 </main>
 
 
