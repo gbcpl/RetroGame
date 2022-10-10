@@ -21,7 +21,7 @@
 
     <div class="search1">
         <select name="consoles" id="console-select">
-        <option value="">Choisissez une console</option>
+        <option value="">Consoles</option>
         <option value="ps5">PlayStation 5</option>
         <option value="xboxs">Xbox Serie S</option>
         <option value="switch">Nintendo Switch</option>

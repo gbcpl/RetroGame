@@ -1,4 +1,4 @@
-CREATE DATABSE IF NOT EXISTS retrogame;
+CREATE DATABASE IF NOT EXISTS retrogame;
 
 USE retrogame;
 
@@ -67,24 +67,16 @@ CREATE TABLE IF NOT EXISTS Product
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     name VARCHAR(55),
     type VARCHAR(55);
-    price_id INT,
+    price INT,
     game_id INT,
     console_id INT,
     accessory_id INT,
     seller_id INT
-    FOREIGN KEY (price_id) REFERENCES Price(id)
     FOREIGN KEY (game_id) REFERENCES Game(id)
     FOREIGN KEY (console_id) REFERENCES Console(id)
     FOREIGN KEY (accessory_id) REFERENCES Accessory(id)
     FOREIGN KEY (seller_id) REFERENCES Seller(id)
 
-);
-
-CREATE TABLE IF NOT EXISTS Price
-(
-    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    type VARCHAR(55),
-    price INT
 );
 
 CREATE TABLE IF NOT EXISTS Game
