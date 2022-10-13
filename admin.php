@@ -24,11 +24,10 @@
                 <li><a href="create_seller.php">Créer un vendeur</a></li>
                 <li><a href="gestion.php">Gérer les commandes</a></li>
                 <li><a href="sells.php">Voir le compte rendu des ventes</a></li>
-                <li><a href="messages.php">Messagerie</a></li>
+                <li><a href="messages_recus.php">Messagerie admin</a></li>
             </ul>
         </nav>
     </aside>
-
 
 <?php include('src/footer.php'); ?>
 

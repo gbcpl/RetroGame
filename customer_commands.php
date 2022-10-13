@@ -23,6 +23,7 @@
                 <li><a href="customer_commands.php">Mes commandes</a></li>
                 <li><a href="customer_infos.php">Mes infos personnelles</a></li>
                 <li><a href="message.php">Envoyer un message</a></li>
+                <li><a href="logout.php">Déconnexion</a></li>
             </ul>
         </nav>
     </aside>

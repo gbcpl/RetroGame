@@ -1,3 +1,5 @@
+<?php require('src/connect.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,54 +18,25 @@
 
 <?php include('src/header.php'); ?>
 
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="img/RetroGame.png" alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="img/ps5.png" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="img/RetroGame.png" alt="Third slide">
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
+<?php
+    
+    $stmt = $db->prepare("SELECT image, game, type, price, console FROM Product");
+    $stmt->execute();
+
+?>
 
     <div class="container">
-        <div class="nouveautes">
-            <h2>Nouveautés</h2>
-                <div class="firstline">
+    <h2>Jeux ajoutés le plus récemment</h2>
+        <div class="firstline">
+            <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
                     <div class="item">
-                        <a class="items" href=""><img src="img/lifeisstrange.jpg"></a>
-                        <h3>Life is Strange sur Switch</h3>
-                        <button class="boutton_panier" type="button"><a class="liensbutton" href="panier.php?action=ajout&amp;l=Life is Strange&amp;q=1&amp;p=30" return false;>Ajouter au panier</a></button>
+                        <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image']) . '" height="" width="" alt="mon image" title="image"/>';?>
+                        <h3><?php echo htmlspecialchars($row['game']); ?></h3><h3>sur</h3>
+                        <h3><?php echo htmlspecialchars($row['console']); ?></h3>
+                        <?php echo htmlspecialchars($row['price']); ?>€
+                        <button class="boutton_panier" type="button"><a class="liensbutton" href="panier.php?action=ajout&amp;l=<?php echo htmlspecialchars($row['game']); ?>&amp;q=1&amp;p=<?php echo htmlspecialchars($row['price']); ?>" return false;">Ajouter au panier</a>
                     </div>
-                <div class="item">
-                        <a class="items" href=""><img src="img/internaldrift.jpg"></a>
-                        <h3>Inertial Drift sur PS5</h3>
-                        <button class="boutton_panier" type="button"><a class="liensbutton" href="panier.php?action=ajout&amp;l=InternalDrift&amp;q=1&amp;p=60" return false;>Ajouter au panier</a></button>
-                </div>
-            <div class="item">
-                <a class="items" href=""><img src="img/pathfinder.jpg"></a>
-                <h3>Pathfinder sur Xbox ONE</h3>
-                <button class="boutton_panier" type="button"><a class="liensbutton" href="panier.php?action=ajout&amp;l=PathFinder&amp;q=1&amp;p=50" return false;>Ajouter au panier</a></button>
-            </div>
-            <div class="item">
-                <a class="items" href=""><img src="img/valkyrieelysium.jpg"></a>
-                <h3>Valkyrie Elysium sur PS4</h3>
-                <button class="boutton_panier" type="button"><a class="liensbutton" href="panier.php?action=ajout&amp;l=ValkyrieElysium&amp;q=1&amp;p=40" return false;>Ajouter au panier</a></button>
-            </div>
-        </button>
-        </div>
+         <?php endwhile; ?>
         </div>
         <h2>Consoles et Accessoires</h2>
         <div class="secondline">

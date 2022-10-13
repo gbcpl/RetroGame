@@ -73,6 +73,8 @@ echo '<?xml version="1.0" encoding="utf-8"?>';?>
 </head>
 <body>
 <?php include('src/header.php'); ?>
+<h2 id="paniertitre">Votre panier</h2>
+
 <br><br><br><br>
 <aside>
    <nav class="navbarright">
@@ -82,7 +84,6 @@ echo '<?xml version="1.0" encoding="utf-8"?>';?>
       </ul>
    </nav>
 </aside>
-<h1>Votre panier</h1>
 
 <form class="panier" method="post" action="panier.php">
 <table class="tableaupanier">

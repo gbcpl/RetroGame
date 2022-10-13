@@ -40,6 +40,8 @@
 				if($password == $user['password']) {
 					$_SESSION['connect'] = 1;
 					$_SESSION['email'] = $user['email'];
+					$_SESSION['customerID'] = $user['id'];
+
 
 					if(isset($_POST['auto'])) {
 						setcookie('auth', $user['secret'], time() + 364*24*3600, '/', null, false, true);

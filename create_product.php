@@ -5,65 +5,25 @@
 	require('src/log.php');
 
 
-	if (!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['password_two'])) {
+	if (!empty($_POST['game']) && !empty($_POST['type']) && !empty($_POST['price'] && !empty($_POST['console']))) {
 
 		require('src/connect.php');
 
 		// CREER VARIABLES
-		$last_name = htmlspecialchars($_POST['last_name']);
-		$first_name = htmlspecialchars($_POST['first_name']);
-		$email = htmlspecialchars($_POST['email']);
-		$company = htmlspecialchars($_POST['company']);
-		$password = htmlspecialchars($_POST['password']);
-		$password_two = htmlspecialchars($_POST['password_two']);
+		$game = htmlspecialchars($_POST['game']);
+		$type = htmlspecialchars($_POST['type']);
+		$price = htmlspecialchars($_POST['price']);
+		$console = htmlspecialchars($_POST['console']);
+        $image = file_get_contents($_FILES['image']['tmp_name']);
+		$sellerID = htmlspecialchars($_POST['sellerID']);
 
-		// VERIFIER SI LES DEUX MDP SONT EGAUX
-
-		if ($password != $password_two) {
-			header('location: signin.php?error=1&message=Vos mots de passe ne sont pas identiques');
-			exit();
-		}
-
-		// VERIFIER EMAIL
-
-		if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-
-			header('location: signin.php?error=1&message=Votre email n\'est pas correct');
-			exit();
-
-		}
-
-		// VERIFIER SI EMAIL EST DEJA UTILISE
-
-		$req = $db->prepare("SELECT count(*) as numberEmail FROM Customer WHERE mail = ?");
-		$req->execute(array($email));
-
-		while($email_verification = $req->fetch()) {
-
-			if ($email_verification['numberEmail'] != 0) {
-				
-				header('location: signin.php?error=1&message=Votre adresse email est déjà utilisée');
-				exit();
-
-			}
-
-		}
-		
-		// HASH
-		$secret = sha1($email).time();
-		$secret = sha1($secret).time();
-
-
-		// CHIFFRAGE MDP
-
-		$password = "aq1".sha1($password."123")."25";
 
 		// ENVOI
 
-		$req = $db->prepare("INSERT INTO Customer(mail, password, secret) VALUES (?, ?, ?)");
-		$req->execute(array($email, $password, $secret));
+		$req = $db->prepare("INSERT INTO Product(game, type, price, console, image) VALUES (?, ?, ?, ?, ?)");
+		$req->execute(array($game, $type, $price, $console, $image));
 
-		header('location: signin.php?success=1');
+		header('location: create_product.php?success=1');
 		exit();
 
 	}
@@ -96,6 +56,21 @@
             </ul>
         </nav>
     </aside>
+
+<main>
+    <h4 class="createproduct">Créez un produit</h4>
+    
+
+    <form enctype="multipart/form-data" class="product" method="post" action="create_product.php">
+				<input class="productform" type="text" name="game" placeholder="Jeu vidéo" required />
+                <input class="productform" type="text" name="type" placeholder="Type de jeu" required />
+				<input class="productform" type="number" name="price" placeholder="Prix" required />
+                <input class="productform" type="text" name="console" placeholder="Console" required />
+                <input class="productform" type="file" name="image" required />                                
+				<button class="submit" type="submit">Créer un produit</button>
+	</form>
+</main>
+
 
 
 <?php include('src/footer.php'); ?>

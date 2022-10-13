@@ -87,7 +87,7 @@
 <body>
 
 <?php include('src/header.php'); ?>
-
+<h4>Inscrivez-vous à RetroGame afin de bénéficier de nombreux avantages sur nos produits.</h4>
     <main>
         <section>
             <div>

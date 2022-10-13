@@ -28,13 +28,12 @@ form {
 }
 
 .searchbar {
-    width: 50%;
-    margin-left: 20px;
+  width: 50%;
+  justify-items: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.searchbar img {
-    height: 20px;
-}
 
 .icons {
     display: flex;
@@ -61,7 +60,7 @@ form {
 .firstline { 
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     margin-bottom: 40px;
     justify-content: center;
     flex-wrap: wrap;
@@ -76,7 +75,6 @@ h3 {
 .item {
     border: solid 2px;
     border-radius: 6px;
-    height: 350px;
     margin-left: 20px;
     background-color:rgb(22,245,178);
     text-align: center;   
@@ -86,6 +84,10 @@ h3 {
     color: black;
     flex-wrap: wrap;
     margin-top: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .secondline {
@@ -172,9 +174,9 @@ li {
 .signin  {
     display: flex;
     flex-direction: column;
-    position: absolute; /* postulat de départ */
-    top: 40%; left: 50%; /* à 50%/50% du parent référent */
-    transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
+    position: absolute; 
+    top: 50%; left: 50%; 
+    transform: translate(-50%, -50%);
     width: 400px;
   }
 
@@ -242,8 +244,9 @@ li {
 
 .customer {
   top: 20%;
-  width: 80%;
+  width: 100%;
   display: flex;
+  flex-direction: column;
   margin-right: auto;
   margin-left: auto;
   margin-top: 100px;
@@ -252,9 +255,10 @@ li {
 
 .items_customer {
     border: solid;
-    height: 20vw;
-    width: 30%;
-    margin-left: 200px;
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 60px;
 }
 
 .infosperso {
@@ -270,6 +274,7 @@ li {
 
 .container_search {
     display: flex;
+    flex-direction: column;
     margin-top: 200px;
     margin-left: auto;
     margin-right: auto;
@@ -295,7 +300,6 @@ select {
 
 #buttonsearch {
     margin-top: 60px;
-    width: 50%;
     margin-right: auto;
     margin-left: auto;
     border-radius: 4px;
@@ -304,12 +308,27 @@ select {
 }
 
 .panier {
-    justify-content: center;
+  justify-content: center;
+}
+
+.messagerie {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 120px;
+  width: 40%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#paniertitre {
+  margin-top: 120px;
 }
 
 .tableaupanier {
     border: solid;
     width: 40%;
+    background-color: #F5225C;
 }
 
 h1 {
@@ -319,17 +338,17 @@ h1 {
 td {
     border: solid;
     text-align: center;
-    padding: 10px;
+    padding: 4px;
 }
 
 
 .navbarright {
     position: absolute;
     right: 0;
-    top: 90px;
+    top: 100px;
     background-color:#16F5B2;
     height:100%;
-    width: 300px;
+    width: 20%;
 }
 
 .links {
@@ -357,19 +376,27 @@ td {
     height: 100px;
  }
 
+.messagesadmin {
+  margin-top: 100px;
+  width: 50%;
+  margin-left: 25%;
+}
+
+.labelmessage {
+  justify-content: center;
+}
+
  .modifierinfos {
     display: flex;
     flex-direction: column;
     align-items: center;
  }
 
-
-
 a {
     text-decoration: none;
 }
 
-.creerseller {
+.creerseller, .createproduct {
   position: absolute;
   top: 100px; 
   width: 100%;
@@ -377,7 +404,7 @@ a {
   margin-right: auto;
 }
 
-.seller {
+.seller, .product {
   position: absolute;
   top: 200px;
   display: flex;
@@ -385,7 +412,6 @@ a {
   width: 15%;
   left: 43%;
 }
-
 
 .panier_icon {
   height: 60px;
@@ -399,7 +425,10 @@ h4 {
   margin-top: 120px;
 }
 
+#h1admin {
+  top: 120px;
 
+}
 .top-nav {
     width: 100%;
 }
@@ -442,6 +471,16 @@ html, body {
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+.products {
+  border: solid;
+}
+
+.recent {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
 }
 
 .menu > li {
@@ -552,5 +591,14 @@ html, body {
     }
   .panier_icon {
     display: none;
+  }
+  .navbarright {
+    display: none;
+  }
+  .navbarleft {
+    display: none;
+  }
+  .items_customer {
+    margin-left: 100px;
   }
 }

@@ -1,6 +1,28 @@
-<?php require('src/connect.php'); ?>
+<?php require('src/connect.php'); 
 
+	session_start();
+	
+	if (!empty($_POST['last_name']) && !empty($_POST['first_name']) && !empty($_POST['phone_nb']) && !empty($_POST['mail'])) {
 
+		require('src/connect.php');
+
+		// CREER VARIABLES
+		$last_name = htmlspecialchars($_POST['last_name']);
+    $first_name = htmlspecialchars($_POST['first_name']);
+    $phone_nb = htmlspecialchars($_POST['phone_nb']);
+    $mail = htmlspecialchars($_POST['mail']);
+
+		// ENVOI
+
+		$req = $db->prepare("UPDATE Customer SET last_name = $last_name, first_name = $first_name, phone_nb = $phone_nb, mail = $mail WHERE id=1");
+		$req->execute(array($last_name, $first_name, $phone_nb, $mail));
+
+		header('location: customer_infos.php?success=1');
+		exit();
+
+	}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,6 +49,7 @@
                 <li><a href="customer_commands.php">Mes commandes</a></li>
                 <li><a href="customer_infos.php">Mes infos personnelles</a></li>
                 <li><a href="message.php">Envoyer un message</a></li>
+                <li><a href="logout.php">Déconnexion</a></li>
             </ul>
         </nav>
     </aside>
@@ -34,18 +57,12 @@
 <main class="customer_infosperso">
     
     
-    <?php
-  $host = 'localhost';
-  $dbname = 'retrogame';
-  $username = 'root';
-  $password = 'root';
+<?php
     
-  $dsn = "mysql:host=$host;dbname=$dbname"; 
-  // récupérer tous les utilisateurs
-  $sql = "SELECT * FROM Customer WHERE ID = 1";
-  $row = [];
-  $stmt = (object)[];
+  $stmt = $db->prepare("SELECT * FROM Customer WHERE ID = 1");
+  $stmt->execute();
 ?>
+
 <div class="infosperso">
  <table>
  <h2>Mes informations personnelles</h2>
@@ -69,29 +86,32 @@
        <td><?php echo htmlspecialchars($row['address_id']); ?></td>
        <td><?php echo htmlspecialchars($row['phone_nb']); ?></td>
 
-
      </tr>
      <?php endwhile; ?>
    </tbody>
  </table>
       <h2 class="titreh2">Modifier mes informations personnelles</h2>
       <div class="modifierinfos">
-        <form class="formulaireinfos" method="POST">
+        <form class="formulaireinfos" method="POST" action="customer_infos.php">
           <ul>
-            <li><input type="text" name="lastname" placeholder="Nom"></input></li>
-            <li><input type="text" name="firstname" placeholder="Prénom"></input></li>
+            <li><input type="text" name="last_name" placeholder="Nom"></input></li>
+            <li><input type="text" name="first_name" placeholder="Prénom"></input></li>
             <li><input type="tel" name="phone_nb" placeholder="Téléphone"></input></li>
-            <li><input type="email" name="email" placeholder="Mail"></input></li>
+            <li><input type="email" name="mail" placeholder="Mail"></input></li>
           </ul>
-          <ul>      
+          <input type="submit">
+        </form>
+        <form>
+
+        <!--  <ul>      
             <li><input type="number" name="streetnumber" placeholder="Numéro de rue"></input></li>
             <li><input type="text" name="street" placeholder="Nom de rue"></input></li>
             <li><input type="text" name="city" placeholder="Ville"></input></li>
             <li><input type="number" name="postalcode" placeholder="Code postal"></input></li>
           </ul>
           <input type="submit">
-        </form>
-        
+        </form> -->
+
       </div>
 </main>
 

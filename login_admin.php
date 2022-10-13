@@ -74,11 +74,11 @@
 
 <?php include('src/header.php'); ?>
 
+<h4>Connectez-vous à votre espace administration</h4>
+
 <main>
         <section>
             <div>
-            <h1>Se connecter</h1>
-
             <?php if(isset($_SESSION['connect'])) { ?>
 
                 <?php
