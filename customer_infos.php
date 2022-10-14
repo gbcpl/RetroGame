@@ -4,23 +4,21 @@
 	
 	if (!empty($_POST['last_name']) && !empty($_POST['first_name']) && !empty($_POST['phone_nb']) && !empty($_POST['mail'])) {
 
-		require('src/connect.php');
-
 		// CREER VARIABLES
 		$last_name = htmlspecialchars($_POST['last_name']);
     $first_name = htmlspecialchars($_POST['first_name']);
-    $phone_nb = htmlspecialchars($_POST['phone_nb']);
+    $phone_nb = ($_POST['phone_nb']);
     $mail = htmlspecialchars($_POST['mail']);
 
 		// ENVOI
+    $database = mysqli_connect("localhost", "root", "root", "retrogame");
 
-		$req = $db->prepare("UPDATE Customer SET last_name = $last_name, first_name = $first_name, phone_nb = $phone_nb, mail = $mail WHERE id=1");
-		$req->execute(array($last_name, $first_name, $phone_nb, $mail));
+    $req=mysqli_query($database, "INSERT INTO Customer (last_name, first_name, phone_nb, mail) VAUES ($last_name, $first_name, $phone_nb, $mail) WHERE id = 1");
 
 		header('location: customer_infos.php?success=1');
 		exit();
 
-	}
+	} 
 
 ?>
 <!DOCTYPE html>
