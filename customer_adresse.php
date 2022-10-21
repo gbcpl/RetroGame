@@ -6,22 +6,21 @@
     header('location: index.php');
     exit();
 }	
-	if (!empty($_POST['last_name']) && !empty($_POST['first_name']) && !empty($_POST['phone_nb']) && !empty($_POST['mail'])) {
+	if (!empty($_POST['number']) && !empty($_POST['street']) && !empty($_POST['city']) && !empty($_POST['postal_code'])) {
 
 		// CREER VARIABLES
-		$last_name = htmlspecialchars($_POST['last_name']);
-    $first_name = htmlspecialchars($_POST['first_name']);
-    $phone_nb = htmlspecialchars($_POST['phone_nb']);
-    $mail = htmlspecialchars($_POST['mail']);
+	$number = htmlspecialchars($_POST['number']);
+    $street = htmlspecialchars($_POST['street']);
+    $city = htmlspecialchars($_POST['city']);
+    $postal_code = htmlspecialchars($_POST['postal_code']);
     $id = ($_SESSION['customerID']);
 
 		// ENVOI
     
-    $req= $db->prepare("UPDATE Customer SET last_name = ?, first_name = ?, phone_nb = ?, mail = ? WHERE id = ?");
-    
-    $req->execute(array($last_name, $first_name, $phone_nb, $mail, $id));
+    $req= $db->prepare("INSERT INTO address_customer (number, street, city, postal_code) VALUES (?, ?, ?, ?)");
+    $req->execute(array($number, $street, $city, $postal_code));
 
-		header('location: customer_infos.php?success=1');
+		header('location: customer_adresse.php?success=1');
 		exit();
 
 	}
@@ -65,44 +64,44 @@
     
 <?php
     
-  $stmt = $db->prepare("SELECT * FROM Customer WHERE id = ?");
+  $stmt = $db->prepare("SELECT * FROM address_customer INNER JOIN customer WHERE customer.id = ?");
   $stmt->execute(array($_SESSION['customerID']));
 ?>
 
 <div class="infosperso">
  <table>
- <h2>Mes informations personnelles</h2>
+ <h2>Mon adresse</h2>
    <thead class="tabcustomer">
      <tr>
-       <th class="tabcustomer">Prénom</th>
-       <th class="tabcustomer">Nom</th>
-       <th class="tabcustomer">Mail</th>
-       <th class="tabcustomer">Téléphone</th>
-
+       <th class="tabcustomer">Numéro</th>
+       <th class="tabcustomer">Rue</th>
+       <th class="tabcustomer">Ville</th>
+       <th class="tabcustomer">Code postal</th>
      </tr>
    </thead>
    <tbody>
      <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
      <tr>
-       <td><?php echo htmlspecialchars($row['first_name']); ?></td>
-       <td><?php echo htmlspecialchars($row['last_name']); ?></td>
-       <td><?php echo htmlspecialchars($row['mail']); ?></td>
-       <td><?php echo htmlspecialchars($row['phone_nb']); ?></td>
+       <td><?php echo htmlspecialchars($row['number']); ?></td>
+       <td><?php echo htmlspecialchars($row['street']); ?></td>
+       <td><?php echo htmlspecialchars($row['city']); ?></td>
+       <td><?php echo htmlspecialchars($row['postal_code']); ?></td>
      </tr>
      <?php endwhile; ?>
    </tbody>
  </table>
-      <h2 class="titreh2">Modifier mes informations personnelles</h2>
+      <h2 class="titreh2">Modifier mon adresse</h2>
       <div class="modifierinfos">
-        <form class="formulaireinfos" method="POST" action="customer_infos.php">
-          <ul id="infoperso">
-            <li><input type="text" name="last_name" placeholder="Nom"></input></li>
-            <li><input type="text" name="first_name" placeholder="Prénom"></input></li>
-            <li><input type="tel" name="phone_nb" placeholder="Téléphone"></input></li>
-            <li><input type="email" name="mail" placeholder="Mail"></input></li>
+        <form id="adressechange" method="POST" action="customer_adresse.php">
+
+          <ul id="adresse">      
+            <li><input type="number" name="number" placeholder="Numéro de rue"></input></li>
+            <li><input type="text" name="street" placeholder="Nom de rue"></input></li>
+            <li><input type="text" name="city" placeholder="Ville"></input></li>
+            <li><input type="number" name="postal_code" placeholder="Code postal"></input></li>
           </ul>
           <input type="submit">
-        </form>
+        </form> 
 
       </div>
 </main>

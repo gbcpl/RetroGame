@@ -65,6 +65,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>';?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="cache-control" content="no-cache" />
     <meta http-equiv="pragma" content="no-cache" />
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <meta name="description" content="Retrouvez votre panier sur Rétro Game"/>    
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/style.css">
@@ -89,10 +90,10 @@ echo '<?xml version="1.0" encoding="utf-8"?>';?>
 <table class="tableaupanier">
 
     <tr>
-        <td><h2>Libellé</h2></td>
-        <td><h2>Quantité</h2></td>
-        <td><h2>Prix Unitaire</h2></td>
-        <td><h2>Action</h2></td>
+        <td><h2 class="panierh2">Libellé</h2></td>
+        <td><h2 class="panierh2">Quantité</h2></td>
+        <td><h2 class="panierh2">Prix Unitaire</h2></td>
+        <td><h2 class="panierh2">Action</h2></td>
     </tr>
 
 

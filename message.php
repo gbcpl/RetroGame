@@ -29,6 +29,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="cache-control" content="no-cache" />
     <meta http-equiv="pragma" content="no-cache" />
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -40,13 +42,14 @@
 
     <aside>
         <nav class="navbarleft fixed-left">
-            <ul>
-                <li><h2>Tableau de bord</h2></li>
-                <li><a href="customer.php">Accueil</a></li>
-                <li><a href="customer_commands.php">Mes commandes</a></li>
-                <li><a href="customer_infos.php">Mes infos personnelles</a></li>
-                <li><a href="message.php">Envoyer un message</a></li>
-                <li><a href="logout.php">Déconnexion</a></li>
+            <ul id="navbarul">
+                <li class="navbaritems"><h2 class="h2nav">Tableau de bord</h2></li>
+                <li class="navbaritems"><a href="customer.php">Accueil</a></li>
+                <li class="navbaritems"><a href="customer_commands.php">Mes commandes</a></li>
+                <li class="navbaritems"><a href="customer_infos.php">Mes infos personnelles</a></li>
+                <li class="navbaritems"><a href="customer_adresse.php">Mes adresses</a></li>
+                <li class="navbaritems"><a href="message.php">Contact</a></li>
+                <li class="navbaritems"><a href="logout.php">Déconnexion</a></li>
             </ul>
         </nav>
     </aside>

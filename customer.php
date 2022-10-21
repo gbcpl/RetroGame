@@ -1,6 +1,12 @@
 <?php 
 
 	session_start();
+
+    if (!isset($_SESSION['connect'])) {
+        header('location: index.php');
+        exit();
+
+    }
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="cache-control" content="no-cache" />
     <meta http-equiv="pragma" content="no-cache" />
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <meta name="description" content="Suivez vos commandes et indiquez vos informations personnelles"/>    
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/style.css">
@@ -23,14 +30,14 @@
 
     <aside>
         <nav class="navbarleft fixed-left">
-            <ul id="tableaudebord">
-                <li><h2>Tableau de bord</h2></li>
-                <li><a href="customer.php">Accueil</a></li>
-                <li><a href="customer_commands.php">Mes commandes</a></li>
-                <li><a href="customer_infos.php">Mes infos personnelles</a></li>
-                <li><a href="message.php">Envoyer un message</a></li>
-                <li><a href="logout.php">Déconnexion</a></li>
-
+        <ul id="navbarul">
+                <li class="navbaritems"><h2 class="h2nav">Tableau de bord</h2></li>
+                <li class="navbaritems"><a href="customer.php">Accueil</a></li>
+                <li class="navbaritems"><a href="customer_commands.php">Mes commandes</a></li>
+                <li class="navbaritems"><a href="customer_infos.php">Mes infos personnelles</a></li>
+                <li class="navbaritems"><a href="customer_adresse.php">Mes adresses</a></li>
+                <li class="navbaritems"><a href="message.php">Contact</a></li>
+                <li class="navbaritems"><a href="logout.php">Déconnexion</a></li>
             </ul>
         </nav>
     </aside>
@@ -40,14 +47,7 @@
         <div class="items_customer">
             <h2>Ma dernière commande</h2>
         </div>
-        <div class="items_customer">
-            <h2>Mes informations personnelles</h2>
-            <p class="infosperso">Nom</p>
-            <p class="infosperso">Prénom</p>
-            <p class="infosperso">Email</p>
-            <p class="infosperso"><a href="customer_infos.php">Modifier mes données personnelles</a></p>
-            
-        </div>
+
     </section>
 
 </main>

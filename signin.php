@@ -2,6 +2,11 @@
 
 	session_start();
 	
+	if (isset($_SESSION['connect'])) {
+        header('location: index.php');
+		exit();
+    }
+
 	require('src/log.php');
 
 
@@ -78,6 +83,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="cache-control" content="no-cache" />
     <meta http-equiv="pragma" content="no-cache" />
+	<link rel="icon" type="image/x-icon" href="img/favicon.ico">
 	<meta name="description" content="Inscription à Rétro Game"/>    
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/style.css">
@@ -98,7 +104,7 @@
                         echo'<div class="alert error">'.htmlspecialchars($_GET['message']).'</div>';
                     } 
                     } else if (isset($_GET['success'])) {
-                    echo'<div class="alert success">Le compte seller a été créé. <a href="login.php">Connectez-vous</a>.</div>';
+                    echo'<div class="alert success">Votre compte a été créé. <a href="login.php">Connectez-vous</a>.</div>';
                     }?>
 
             <form class="signin" method="post" action="signin.php">

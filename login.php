@@ -2,6 +2,12 @@
 
 	session_start();
 
+    if (isset($_SESSION['connect'])) {
+        header('location: customer.php');
+		exit();
+    }
+
+
 	require('src/log.php');
 
 	if(!empty($_POST['email']) && !empty($_POST['password'])) {
@@ -66,6 +72,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="cache-control" content="no-cache" />
     <meta http-equiv="pragma" content="no-cache" />
+	<link rel="icon" type="image/x-icon" href="img/favicon.ico">
 	<meta name="description" content="Connectez-vous à Rétro Game afin de gérer vos commandes"/>    
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/style.css">
@@ -76,9 +83,9 @@
 
 <?php include('src/header.php'); ?>
 
-    <main>
+    <main class="main">
         <section>
-            <div>
+            <div class="connection">
             <?php if(isset($_SESSION['connect'])) { ?>
 
                 <?php
@@ -102,6 +109,7 @@
 				<input class="login_form" type="email" name="email" placeholder="Votre adresse email" required />
 				<input class="login_form" type="password" name="password" placeholder="Mot de passe" required />
 				<button class="submit" type="submit">Se connecter</button>
+				<p class="inscription">Pas encore de compte ? <a href="signin.php"> Inscrivez-vous !</a></p> 
 			</form>
             </div>
         </section>

@@ -39,6 +39,7 @@
 			while($user = $req->fetch()) {
 				if("root" == $user['password']) {
 					$_SESSION['connect'] = 1;
+					$_SESSION['admin'] = 1;
 					$_SESSION['email'] = $user['email'];
 
 					if(isset($_POST['auto'])) {
@@ -64,6 +65,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="cache-control" content="no-cache" />
     <meta http-equiv="pragma" content="no-cache" />
+	<link rel="icon" type="image/x-icon" href="img/favicon.ico">
 	<meta name="description" content="Connexion à vos espace administration"/>    
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/style.css">
