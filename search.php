@@ -12,7 +12,7 @@ if(isset($_POST['save']))
     {
         $search = $_POST['search'];
 
-        $stmt = $db->prepare("SELECT * FROM Product WHERE game LIKE '%$search%' OR console LIKE '%$search%'");
+        $stmt = $db->prepare("SELECT * FROM product WHERE game LIKE '%$search%' OR console LIKE '%$search%'");
         $stmt->execute($save);
         $product = $stmt->fetchAll(PDO::FETCH_ASSOC);
          

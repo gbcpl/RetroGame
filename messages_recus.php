@@ -35,7 +35,7 @@
 
 <?php
     
-    $stmt = $db->prepare("SELECT text, customer_id, mail FROM Message INNER JOIN Customer WHERE customer_id = customer.id ");
+    $stmt = $db->prepare("SELECT text, customer_id, mail FROM message INNER JOIN customer WHERE customer_id = customer.id ");
     $stmt->execute();
 
 ?>

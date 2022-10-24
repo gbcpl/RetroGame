@@ -20,12 +20,12 @@
 		$price = htmlspecialchars($_POST['price']);
 		$console = htmlspecialchars($_POST['console']);
         $image = file_get_contents($_FILES['image']['tmp_name']);
-		$sellerID = htmlspecialchars($_POST['sellerID']);
+		// $sellerID = htmlspecialchars($_POST['sellerID']);
 
 
 		// ENVOI
 
-		$req = $db->prepare("INSERT INTO Product(game, type, price, console, image) VALUES (?, ?, ?, ?, ?)");
+		$req = $db->prepare("INSERT INTO product(game, type, price, console, image) VALUES (?, ?, ?, ?, ?)");
 		$req->execute(array($game, $type, $price, $console, $image));
 
 		header('location: create_product.php?success=1');

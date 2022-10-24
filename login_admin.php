@@ -2,12 +2,13 @@
 
 	session_start();
 
+
+	require('src/connect.php');
+
 	require('src/logadmin.php');
 
 	if(!empty($_POST['email']) && !empty($_POST['password'])) {
 		
-		require('src/connect.php');
-
 			// VARIABLES
 			$email = htmlspecialchars($_POST['email']);
 			$password = htmlspecialchars($_POST['password']);
@@ -21,7 +22,7 @@
 			$password = "aq1".sha1($password."123")."25";
 
 			// EMAIL UTILISE ?
-			$req = $db->prepare("SELECT count(*) as numberEmail FROM Admin WHERE mail = ?");
+			$req = $db->prepare("SELECT count(*) as numberEmail FROM admin WHERE mail = ?");
 			$req->execute(array($email));
 
 			while($email_verification = $req->fetch()) {
@@ -33,14 +34,14 @@
 			
 			// CONNEXION
 
-			$req = $db->prepare("SELECT * FROM Admin WHERE mail = ?");
+			$req = $db->prepare("SELECT * FROM admin WHERE mail = ?");
 			$req->execute(array($email));
 
 			while($user = $req->fetch()) {
 				if("root" == $user['password']) {
 					$_SESSION['connect'] = 1;
 					$_SESSION['admin'] = 1;
-					$_SESSION['email'] = $user['email'];
+					$_SESSION['email'] = $user['mail'];
 
 					if(isset($_POST['auto'])) {
 						setcookie('auth', $user['secret'], time() + 364*24*3600, '/', null, false, true);

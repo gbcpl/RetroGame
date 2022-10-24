@@ -17,7 +17,7 @@
 
 		// ENVOI
     
-    $req= $db->prepare("UPDATE Customer SET last_name = ?, first_name = ?, phone_nb = ?, mail = ? WHERE id = ?");
+    $req= $db->prepare("UPDATE customer SET last_name = ?, first_name = ?, phone_nb = ?, mail = ? WHERE id = ?");
     
     $req->execute(array($last_name, $first_name, $phone_nb, $mail, $id));
 
@@ -64,7 +64,7 @@
     
 <?php
     
-  $stmt = $db->prepare("SELECT * FROM Customer WHERE id = ?");
+  $stmt = $db->prepare("SELECT * FROM customer WHERE id = ?");
   $stmt->execute(array($_SESSION['customerID']));
 ?>
 

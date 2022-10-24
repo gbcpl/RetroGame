@@ -6,14 +6,12 @@
 
         // VERIFIER
 
-        require('src/connect.php');
-
-        $req = $db->prepare("SELECT count(*) as numberAccount FROM Admin WHERE secret = ?");
+        $req = $db->prepare("SELECT count(*) as numberAccount FROM admin WHERE secret = ?");
         $req->execute(array($secret));
 
         while($user = $req->fetch() ) {
             if($user['numberAccount'] == 1){
-                $reqUser = $db->prepare("SELECT * FROM Admin WHERE secret = ?");
+                $reqUser = $db->prepare("SELECT * FROM admin WHERE secret = ?");
                 $reqUser->execute(array($secret));
 
                 while($userAccount = $reqUser->fetch()){
@@ -24,6 +22,3 @@
             }
         }
     }
-
-
-?> 

@@ -25,7 +25,7 @@
 
 <?php
     
-    $stmt = $db->prepare("SELECT image, game, type, price, console FROM Product");
+    $stmt = $db->prepare("SELECT image, game, type, price, console FROM product");
     $stmt->execute();
 
 ?>

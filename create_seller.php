@@ -38,7 +38,7 @@
 
 		// VERIFIER SI EMAIL EST DEJA UTILISE
 
-		$req = $db->prepare("SELECT count(*) as numberEmail FROM Seller WHERE mail = ?");
+		$req = $db->prepare("SELECT count(*) as numberEmail FROM seller WHERE mail = ?");
 		$req->execute(array($email));
 
 		while($email_verification = $req->fetch()) {
@@ -63,7 +63,7 @@
 
 		// ENVOI
 
-		$req = $db->prepare("INSERT INTO Seller(last_name, first_name, mail, password, company) VALUES (?, ?, ?, ?, ?)");
+		$req = $db->prepare("INSERT INTO seller(last_name, first_name, mail, password, company) VALUES (?, ?, ?, ?, ?)");
 		$req->execute(array($last_name, $first_name, $email, $password, $company));
 
 		header('location: create_seller.php?success=1');

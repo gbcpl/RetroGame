@@ -27,7 +27,7 @@
 			$password = "aq1".sha1($password."123")."25";
 
 			// EMAIL UTILISE ?
-			$req = $db->prepare("SELECT count(*) as numberEmail FROM Customer WHERE mail = ?");
+			$req = $db->prepare("SELECT count(*) as numberEmail FROM customer WHERE mail = ?");
 			$req->execute(array($email));
 
 			while($email_verification = $req->fetch()) {
@@ -39,13 +39,13 @@
 			
 			// CONNEXION
 
-			$req = $db->prepare("SELECT * FROM Customer WHERE mail = ?");
+			$req = $db->prepare("SELECT * FROM customer WHERE mail = ?");
 			$req->execute(array($email));
 
 			while($user = $req->fetch()) {
 				if($password == $user['password']) {
 					$_SESSION['connect'] = 1;
-					$_SESSION['email'] = $user['email'];
+					$_SESSION['email'] = $user['mail'];
 					$_SESSION['customerID'] = $user['id'];
 
 

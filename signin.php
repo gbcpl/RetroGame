@@ -2,6 +2,9 @@
 
 	session_start();
 	
+	require('src/connect.php');
+
+
 	if (isset($_SESSION['connect'])) {
         header('location: index.php');
 		exit();
@@ -12,13 +15,9 @@
 
 	if (!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['password_two'])) {
 
-		require('src/connect.php');
 
 		// CREER VARIABLES
-		$last_name = htmlspecialchars($_POST['last_name']);
-		$first_name = htmlspecialchars($_POST['first_name']);
 		$email = htmlspecialchars($_POST['email']);
-		$company = htmlspecialchars($_POST['company']);
 		$password = htmlspecialchars($_POST['password']);
 		$password_two = htmlspecialchars($_POST['password_two']);
 
@@ -30,8 +29,7 @@
 		}
 
 		// VERIFIER EMAIL
-
-		if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+		elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
 			header('location: signin.php?error=1&message=Votre email n\'est pas correct');
 			exit();
@@ -40,20 +38,19 @@
 
 		// VERIFIER SI EMAIL EST DEJA UTILISE
 
-		$req = $db->prepare("SELECT count(*) as numberEmail FROM Customer WHERE mail = ?");
+		else {
+
+
+		$req = $db->prepare("SELECT count(*) as numberEmail FROM customer WHERE mail = ?");
 		$req->execute(array($email));
-
-		while($email_verification = $req->fetch()) {
-
-			if ($email_verification['numberEmail'] != 0) {
-				
-				header('location: signin.php?error=1&message=Votre adresse email est déjà utilisée');
-				exit();
-
-			}
+		if ($req->rowCount() != 0) {
+			
+			header('location: signin.php?error=1&message=Votre%20adresse%20email%20est%20d%C3%A9j%C3%A0%20utilis%C3%A9e');
+			exit();
 
 		}
-		
+		else {
+
 		// HASH
 		$secret = sha1($email).time();
 		$secret = sha1($secret).time();
@@ -65,13 +62,12 @@
 
 		// ENVOI
 
-		$req = $db->prepare("INSERT INTO Customer(mail, password, secret) VALUES (?, ?, ?)");
+		$req = $db->prepare("INSERT INTO customer(mail, password, secret) VALUES (?, ?, ?)");
 		$req->execute(array($email, $password, $secret));
 
-		header('location: signin.php?success=1');
-		exit();
-
-	}
+		header('location: index.php?success=1');
+		}
+	}}
 
 ?>
 
