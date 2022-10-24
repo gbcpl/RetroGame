@@ -51,7 +51,6 @@
             <ul id="navbarul">
                 <li class="navbaritems"><h2 class="h2nav">Tableau de bord</h2></li>
                 <li class="navbaritems"><a href="customer.php">Accueil</a></li>
-                <li class="navbaritems"><a href="customer_commands.php">Mes commandes</a></li>
                 <li class="navbaritems"><a href="customer_infos.php">Mes infos personnelles</a></li>
                 <li class="navbaritems"><a href="customer_adresse.php">Mes adresses</a></li>
                 <li class="navbaritems"><a href="message.php">Contact</a></li>

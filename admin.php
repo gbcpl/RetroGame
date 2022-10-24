@@ -39,6 +39,8 @@
         </nav>
     </aside>
 
+<h2>Bienvenue dans votre espace administrateur</h2>
+
 <?php include('src/footer.php'); ?>
 
 </body>

@@ -93,7 +93,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>';?>
         <td><h2 class="panierh2">Libellé</h2></td>
         <td><h2 class="panierh2">Quantité</h2></td>
         <td><h2 class="panierh2">Prix Unitaire</h2></td>
-        <td><h2 class="panierh2">Action</h2></td>
+        <td><h2 class="panierh2">Supprimer</h2></td>
     </tr>
 
 

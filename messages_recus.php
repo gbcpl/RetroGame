@@ -40,11 +40,9 @@
 
 ?>
      <table class="messagesadmin">
-        <h4>Mes messages</h4>
      <thead>
        <tr>
          <th>Message</th>
-         <th>customer_id</th>
          <th>Mail expéditeur</th>
        </tr>
      </thead>
@@ -52,7 +50,6 @@
        <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
        <tr>
          <td><?php echo htmlspecialchars($row['text']); ?></td>
-         <td><?php echo htmlspecialchars($row['customer_id']); ?></td>
          <td><?php echo htmlspecialchars($row['mail']); ?></td>
        </tr>
        <?php endwhile; ?>

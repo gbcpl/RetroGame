@@ -431,8 +431,8 @@ td {
  }
 
 .messagesadmin {
-  margin-top: 100px;
-  width: 50%;
+  margin-top: 200px;
+  width: 60%;
   margin-left: 25%;
 }
 
@@ -709,5 +709,10 @@ html, body {
   .seller, .product {
     width: 50%;
     left: 25%;
+  }
+  .messagesadmin {
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;  
   }
 }

@@ -17,8 +17,8 @@
 
 		// ENVOI
     
-    $req= $db->prepare("INSERT INTO address_customer (number, street, city, postal_code) VALUES (?, ?, ?, ?)");
-    $req->execute(array($number, $street, $city, $postal_code));
+    $req= $db->prepare("INSERT INTO address_customer (number, street, city, postal_code, customer_id) VALUES (?, ?, ?, ?, ?)");
+    $req->execute(array($number, $street, $city, $postal_code, $id));
 
 		header('location: customer_adresse.php?success=1');
 		exit();
@@ -50,7 +50,6 @@
             <ul id="navbarul">
                 <li class="navbaritems"><h2 class="h2nav">Tableau de bord</h2></li>
                 <li class="navbaritems"><a href="customer.php">Accueil</a></li>
-                <li class="navbaritems"><a href="customer_commands.php">Mes commandes</a></li>
                 <li class="navbaritems"><a href="customer_infos.php">Mes infos personnelles</a></li>
                 <li class="navbaritems"><a href="customer_adresse.php">Mes adresses</a></li>
                 <li class="navbaritems"><a href="message.php">Contact</a></li>
@@ -64,7 +63,7 @@
     
 <?php
     
-  $stmt = $db->prepare("SELECT * FROM address_customer INNER JOIN customer WHERE customer.id = ?");
+  $stmt = $db->prepare("SELECT * FROM address_customer INNER JOIN customer WHERE customer_id = ? LIMIT 1");
   $stmt->execute(array($_SESSION['customerID']));
 ?>
 
@@ -90,7 +89,7 @@
      <?php endwhile; ?>
    </tbody>
  </table>
-      <h2 class="titreh2">Modifier mon adresse</h2>
+      <h2 class="titreh2">Ajouter une adresse</h2>
       <div class="modifierinfos">
         <form id="adressechange" method="POST" action="customer_adresse.php">
 
